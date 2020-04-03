@@ -1,0 +1,17 @@
+{
+  "name": "coronavirus",
+  "displayName": "coronavirus",
+  "expo": {
+    "name": "coronavirus",
+    "slug": "coronavirus",
+    "version": "1.0.0",
+    "platforms": [
+      "ios",
+      "android",
+      "web"
+    ],
+    "assetBundlePatterns": [
+      "**/*"
+    ]
+  }
+}
