@@ -1,36 +1,49 @@
+import { NavigationContainer } from '@react-navigation/native';
 import * as React from 'react';
+import Map from './Components/MapView';
+import { createMaterialBottomTabNavigator } from '@react-navigation/material-bottom-tabs';
 import { Platform, StyleSheet, Text, View } from 'react-native';
+import { Provider as PaperProvider , DefaultTheme } from 'react-native-paper';
 
-const instructions = Platform.select({
-  ios: `Press Cmd+R to reload,\nCmd+D or shake for dev menu`,
-  android: `Double tap R on your keyboard to reload,\nShake or press menu button for dev menu`,
-});
+const theme = {
+  ...DefaultTheme,
+  roundness: 2,
+  colors: {
+    ...DefaultTheme.colors,
+    primary: "#121212",
+    accent: "#fff"
+  }
+};
+const Tab = createMaterialBottomTabNavigator(  );
 
 export default function App() {
   return (
-    <View style={styles.container}>
-      <Text style={styles.welcome}>Welcome to React Native!</Text>
-      <Text style={styles.instructions}>To get started, edit App.js</Text>
-      <Text style={styles.instructions}>{instructions}</Text>
+    <PaperProvider>
+ <View style = {{flex:1}}>
+    
+      
+    
+    
+    <NavigationContainer >
+      <Tab.Navigator initialRouteName = "Documentation"  >
+      <Tab.Screen name="MapView" options = {{ 
+        tabBarIcon:'book'
+      }} component={Map}/>
+      
+        
+       
+      </Tab.Navigator>
+    </NavigationContainer>
+    
     </View>
+  </PaperProvider>
+
   );
 }
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: '#F5FCFF',
-  },
-  welcome: {
-    fontSize: 20,
-    textAlign: 'center',
-    margin: 10,
-  },
-  instructions: {
-    textAlign: 'center',
-    color: '#333333',
-    marginBottom: 5,
-  },
+    backgroundColor: '#FFFCFF',
+  }
 });
