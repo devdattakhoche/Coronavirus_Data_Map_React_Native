@@ -1,7 +1,7 @@
 
-import {Title , Card , Paragraph ,} from 'react-native-paper';
+import {Title , Card , Paragraph , Appbar , IconButton} from 'react-native-paper';
 import React, { Component } from 'react';
-import { View, Text, Alert , StyleSheet } from 'react-native';
+import { View, Text, Alert , StyleSheet, ActivityIndicator, RefreshControl, } from 'react-native';
 import  MapView  ,{ Marker , Callout } from 'react-native-maps';
 import { Dark } from './MapStyles/Styles';
 import axios from 'axios';
@@ -24,9 +24,16 @@ export default class Map extends Component {
   constructor(props) {
     super(props);
     this.state = {
-        markers : []
+        markers : null,
+        refreshing: true
     };
     this.fetchdata = this.fetchdata.bind(this);
+  }
+  onRefresh() {
+    //Clear old data of the list
+    this.setState({ markers: [] });
+    //Call the Service to get the latest data
+    this.fetchdata();
   }
 fetchdata = async () =>{
     let mydata = null;
@@ -45,40 +52,63 @@ mydata.map(object => {
             'longitude' : object.countryInfo.long
         },
         cases : object.cases,
-        Country : object.country 
+        Country : object.country ,
+        
     }
     markerarray.push(markerobject)
 })
 // console.log(markerarray)
 this.setState({
-    markers:markerarray
+    markers:markerarray,
+    refreshing: false,
+    
+
 })
 }
 
-componentDidMount(){
-    this.fetchdata()
-}
+
   render() {
-    //   console.log(this.state.markers)
-        if(this.state.markers === null){
-            this.fetchdata()
-            console.log('went inside')
-        }    
+    if(this.state.markers === null){
+        this.fetchdata()
+        console.log('went inside')
+    }    
+    if (this.state.refreshing) {
+        console.log('hehehe')
+        return (
+          //loading view while data is loading
+          <View style={{ flex: 1, justifyContent : 'center' }}>
+            <ActivityIndicator size='large' color = 'black' />
+          </View>
+        );
+      }
+     
+        
     return (
-      
+      <View style = {{flex:1}}  >
+      <View>
+       <Appbar.Header style={{ backgroundColor: "black" }}>
+              <IconButton icon="battlenet" color = 'white' />
+              <Appbar.Content
+                style={{ alignItems: "center" }}
+                title="COVID-19"
+                subtitle="World Map View"
+              />
+              <IconButton icon="reload" color = 'white' onPress = {() => console.log('hi there')}/>
+            </Appbar.Header>
+            </View>
          <MapView
-         style = {{flex:1}}
+         cacheEnabled ={true}
+         style = {styles.map}
          customMapStyle={Dark}
          loadingEnabled = {true}
-    
-    
+             
     onPress={ (event) => console.log(event.nativeEvent.coordinate) }
     >
     {this.state.markers.map((marker) => {
         return (
-          <Marker coordinate={marker.latlng} >
+          <Marker coordinate={marker.latlng} tracksViewChanges={false} key = {marker.Country} >
             <View style={styles.marker}>
-           <Text style = {{fontSize:5 , alignSelf:'center'}} >
+           <Text style = {{fontSize:8 , alignSelf:'center'}} >
            {((marker.Country).length > 13) ? 
     (((marker.Country).substring(0,13-3)) + '...') : 
     marker.Country }
@@ -90,6 +120,8 @@ componentDidMount(){
         )
       })}
   </MapView>
+  </View>
+  
     
   
       
@@ -104,8 +136,11 @@ const styles = StyleSheet.create({
       backgroundColor: "red",
       padding: 5,
       borderRadius: 10,
-      borderColor:'black',
-      borderWidth:3
+      shadowOpacity:1,
+      borderWidth:3,
+      elevation:4,
+    shadowRadius: 15,
+    
     },
     text: {
       color: "#FFF",
@@ -114,5 +149,8 @@ const styles = StyleSheet.create({
       alignSelf:'center',
       justifyContent:'center',
       
-    }
+    },
+    map: {
+        ...StyleSheet.absoluteFillObject,
+      },
   });
