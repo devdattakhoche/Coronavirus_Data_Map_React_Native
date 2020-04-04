@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { View , ActivityIndicator} from "react-native";
-import { DataTable , Appbar, IconButton } from 'react-native-paper';
+import { DataTable , Appbar, IconButton , Title } from 'react-native-paper';
 import axios from 'axios';
 import { ScrollView } from 'react-native-gesture-handler';
 
@@ -22,7 +22,7 @@ mydata = response.data;
 }).catch(function(error){
     Alert.alert('Error',error.message)
 })
-Objectarray = []
+let Objectarray = []
 mydata.map(object => {
     let  Complete_Object = {
         
@@ -45,7 +45,7 @@ mydata.map(object => {
     
 })
 this.setState({
-    Objects : Objectarray,
+    Objects : Objectarray.slice(1,),
     refreshing:false
 })
 
@@ -70,18 +70,21 @@ this.setState({
               <Appbar.Content
                 style={{ alignItems: "center" }}
                 title="COVID-19"
-                subtitle="World Map View"
+                subtitle="Click on the Country to View Details"
               />
                <IconButton icon="reload" color = 'white' />
               </Appbar.Header>
 
                 <ActivityIndicator color = 'black' size = 'large' style = {{marginTop:100}} />
+                <Title style={{alignSelf:'center'}}>
+                    Fetching Data...
+                </Title>
               </View>
           )
       }
       var datatable = this.state.Objects.map(Object => {
           return(
-            <DataTable.Row key = {Object.Country}>
+            <DataTable.Row key = {Object.Country}  >
             <DataTable.Cell onPress = {() => this.handlePress(Object)}>{Object.Country}</DataTable.Cell>
             <DataTable.Cell numeric>{Object.Cases}</DataTable.Cell>
             <DataTable.Cell numeric>{Object.Active}</DataTable.Cell>
@@ -99,7 +102,7 @@ this.setState({
               <Appbar.Content
                 style={{ alignItems: "center" }}
                 title="COVID-19"
-                subtitle="World Map View"
+                subtitle="Click on the Country to View Details"
               />
                <IconButton icon="reload" color = 'white' onPress = {() => this.componentDidMount()}/>
              

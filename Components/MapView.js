@@ -51,9 +51,18 @@ mydata.map(object => {
             'latitude' : object.countryInfo.lat,
             'longitude' : object.countryInfo.long
         },
-        cases : object.cases,
+    Cases : object.cases,
         Country : object.country ,
-        
+        Deaths : object.deaths,
+        Active : object.active,
+        Cpermillion : object.casesPerOneMillion,
+        Dpermillion : object.deathsPerOneMillion,
+        Recovered : object.recovered,
+        Today_Cases : object.todayCases,
+        Today_Deaths : object.todayDeaths,
+        Updated : object.updated,
+        Critical : object.critical,
+        Country_info : object.countryInfo    
     }
     markerarray.push(markerobject)
 })
@@ -91,7 +100,7 @@ this.setState({
               <Appbar.Content
                 style={{ alignItems: "center" }}
                 title="COVID-19"
-                subtitle="World Map View"
+                subtitle="Click on the marker to View Details"
               />
               <IconButton icon="reload" color = 'white' onPress = {() => console.log('hi there')}/>
             </Appbar.Header>
@@ -106,14 +115,14 @@ this.setState({
     >
     {this.state.markers.map((marker) => {
         return (
-          <Marker coordinate={marker.latlng} tracksViewChanges={false} key = {marker.Country} >
+          <Marker coordinate={marker.latlng} tracksViewChanges={false} onPress = {() =>this.props.navigation.navigate('CityView',marker)} key = {marker.Country} >
             <View style={styles.marker}>
            <Text style = {{fontSize:8 , alignSelf:'center'}} >
            {((marker.Country).length > 13) ? 
     (((marker.Country).substring(0,13-3)) + '...') : 
     marker.Country }
            </Text>
-              <Text style={styles.text}>{marker.cases}</Text>
+              <Text style={styles.text}>{marker.Cases}</Text>
             </View>
             
           </Marker>
