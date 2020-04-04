@@ -56,7 +56,7 @@ export default class Map extends Component {
     });
 
     this.setState({
-      markers: markerarray.slice(1),
+      markers: markerarray,
       refreshing: false
     });
   };

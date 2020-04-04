@@ -41,7 +41,7 @@ export default class TableView extends React.Component {
       Objectarray.push(Complete_Object);
     });
     this.setState({
-      Objects: Objectarray.slice(1),
+      Objects: Objectarray,
       refreshing: false
     });
   };
