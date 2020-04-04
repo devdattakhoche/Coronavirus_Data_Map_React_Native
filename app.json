@@ -1,10 +1,16 @@
 {
-  "name": "coronavirus",
-  "displayName": "coronavirus",
+  "name": "COVID-19 Daily Stats",
+  "displayName": "COVID-19 Daily Stats",
   "expo": {
-    "name": "coronavirus",
-    "slug": "coronavirus",
+    "name": "COVID-19 Daily Stats",
+    "slug": "Covid19slug",
+    "icon": "./favicon.png",
     "version": "1.0.0",
+    
+    "android": {
+      "package": "com.devdattakhoche.coronavirus",
+      "versionCode": 1
+    },
     "platforms": [
       "ios",
       "android",

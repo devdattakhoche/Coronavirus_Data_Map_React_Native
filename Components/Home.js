@@ -23,7 +23,7 @@ class Home extends React.Component {
           Objects: mydata,
           refreshing: false
         });
-        console.log(this.state.Objects, "asasas");
+        
       })
       .catch(function(error) {
         Alert.alert("Error", "There was problem in fetching data.");
@@ -69,7 +69,7 @@ class Home extends React.Component {
     }
     var Updated = new Date(this.state.Objects.updated).toLocaleString();
     var subtitle = "Updated : " + Updated;
-    console.log(this.state);
+    
     return (
       <View style={{ flex: 1 }}>
         <View>
