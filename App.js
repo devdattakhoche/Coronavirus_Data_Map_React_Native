@@ -6,7 +6,7 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { Platform, StyleSheet, Text, View } from 'react-native';
 import { Provider as PaperProvider, DefaultTheme, IconButton , Button} from 'react-native-paper';
 import TableView from './Components/TableView';
-import { Ionicons , Feather } from '@expo/vector-icons'
+import { Ionicons , Feather , AntDesign } from '@expo/vector-icons'
 import CityView from './Components/CityView';
 
 
@@ -31,7 +31,7 @@ export default function App() {
     
   
     <NavigationContainer >
-    <Tab.Navigator initialRouteName = 'Map' tabBarOptions={{activeTintColor:'black',inactiveTintColor:'gray'}} tabBar={props => <BottomTabBar {...props} state={{...props.state, routes: props.state.routes.slice(0,2)}}></BottomTabBar>}> 
+    <Tab.Navigator initialRouteName = 'Map' tabBarOptions={{activeTintColor:'black',inactiveTintColor:'gray'}} tabBar={props => <BottomTabBar {...props} state={{...props.state, routes: props.state.routes.slice(0,3)}}></BottomTabBar>}> 
       <Tab.Screen name="Map" component={Map}   options={{
           tabBarLabel: 'Map View',
           tabBarIcon: ({ focused} ) => {
@@ -57,6 +57,21 @@ export default function App() {
             }
             else{
               return <Ionicons name='ios-list-box' size={20} color = 'gray'  /> 
+            }
+          }
+           
+         
+        
+        }} ></Tab.Screen>
+        <Tab.Screen name="Home" component={Home} options={{
+         
+         tabBarIcon: ({ focused} ) => {
+            if(focused) 
+            {
+              return <AntDesign name='Home' size={20} color = '#4c8bf5'  />
+            }
+            else{
+              return <AntDesign name='Home' size={20} color = 'gray'  /> 
             }
           }
            

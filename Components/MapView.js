@@ -1,5 +1,5 @@
 
-import {Title , Card , Paragraph , Appbar , IconButton} from 'react-native-paper';
+import {Title , Card , Paragraph , Appbar , IconButton, Switch} from 'react-native-paper';
 import React, { Component } from 'react';
 import { View, Text, Alert , StyleSheet, ActivityIndicator, RefreshControl, } from 'react-native';
 import  MapView  ,{ Marker , Callout } from 'react-native-maps';
@@ -25,10 +25,12 @@ export default class Map extends Component {
     super(props);
     this.state = {
         markers : null,
-        refreshing: true
+        refreshing: true,
+        isSwitchOn: false,
     };
     this.fetchdata = this.fetchdata.bind(this);
   }
+  _onToggleSwitch = () => this.setState(state => ({ isSwitchOn: !state.isSwitchOn }));
   onRefresh() {
     //Clear old data of the list
     this.setState({ markers: [] });
@@ -68,7 +70,7 @@ mydata.map(object => {
 })
 // console.log(markerarray)
 this.setState({
-    markers:markerarray,
+    markers:markerarray.slice(1,),
     refreshing: false,
     
 
@@ -102,7 +104,7 @@ this.setState({
                 title="COVID-19"
                 subtitle="Click on the marker to View Details"
               />
-              <IconButton icon="reload" color = 'white' onPress = {() => console.log('hi there')}/>
+              <IconButton icon="map" color = 'white' />
             </Appbar.Header>
             </View>
          <MapView

@@ -19,7 +19,7 @@ const CityView = (props) => {
                 title="COVID-19"
                 subtitle="World Map View"
               />
-               <IconButton icon="reload" color = 'white' onPress = {() => this.componentDidMount()}/>
+               <IconButton icon="map-marker-radius" color = 'white' />
              
             </Appbar.Header>
             <View  style = {{flex:1}}>
