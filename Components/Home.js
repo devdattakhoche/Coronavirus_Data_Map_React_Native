@@ -143,6 +143,67 @@ this.setState({
       <Title style = {styles.Title} >Today's Deaths : {this.state.Objects.todayDeaths  === undefined ? 'Yet to be Updated' : this.state.Objects.todayDeaths}</Title>
    </Card.Content>
  </Card>
+ <Card  style={{
+                   // borderColor: "black",
+                   borderRadius: 10,
+                   borderLeftColor:'blue',
+                   borderLeftWidth:2,
+                   borderRightColor:'blue',
+                   borderRightWidth:2,
+                   marginLeft: 30,
+                   marginBottom: 30,
+                   marginRight: 30
+                 }}>
+   <Card.Title  title='Documentation' left={(props) => <Avatar.Icon style ={{elevation:20,color:'black',backgroundColor:'#4c8bf5'}}  size={50} icon="book" />} />
+ 
+   <Card.Content style = {styles.Title} >
+  
+  <Title >Home</Title>
+  <Subheading>
+   Home page shows the World stats for COVID-19 , Documentation and Disclaimer.
+  </Subheading>
+  </Card.Content>
+  
+   <Card.Content style = {styles.Title} >
+  
+   <Title  >World Map View</Title>
+   <Subheading>
+    The map view shows the Coronavirus cases of the particular counrty where that particular marker is specified.To know the details of that particular Country you can tap on that marker to know more.
+   </Subheading>
+   </Card.Content>
+   <Card.Content style = {styles.Title} >
+  
+   <Title>Country View</Title>
+   <Subheading>
+    The Country view is arranged in Descending manner of the Cases of the Countries .
+    To get the details of a particular Country you can tap on the Country in the Country Column.
+   </Subheading>
+   </Card.Content>
+ </Card>
+ <Card  style={{
+                   // borderColor: "black",
+                   borderRadius: 10,
+                   borderLeftColor:'black',
+                   borderLeftWidth:2,
+                   borderRightColor:'black',
+                   borderRightWidth:2,
+                   marginLeft: 30,
+                   marginBottom: 30,
+                   marginRight: 30
+                 }}>
+   <Card.Title  title='Disclaimer' left={(props) => <Avatar.Icon style ={{elevation:20,color:'black',backgroundColor:'red'}}  size={50} icon="alert" />} />
+ 
+   <Card.Content style = {styles.Title} >
+ <Subheading>
+     The intention of this app is to provide information of COVID-19 stats and not to spread any false information .
+     The stats provided here are through a public API which may not provide exact stats and can vary. 
+     This mobile app is intended for informational purpose only. It is not, and is not intended for use of in the diagnosis of COVID-19 or other conditions or in the cure , migration , treatment or prevention of disease , in man or any other animal.
+     This app has no intention to hurt any individual , group of people or a community.
+     The Developer is not responsible if any information is found incorrect.
+     Thank You!</Subheading>
+
+   </Card.Content>
+ </Card>
  </ScrollView>
 </View>
     )
@@ -153,7 +214,7 @@ this.setState({
 export default Home;
 const styles = StyleSheet.create({
     Title: {
-        marginBottom:10,borderBottomColor:'black',borderBottomWidth:2,borderRadius:10
+        marginBottom:10,borderBottomColor:'black',borderBottomWidth:2,borderRadius:10,margin:10
     },
     Content : {
         marginLeft:20,marginRight:20,borderBottomColor:'black',borderBottomWidth:2,borderRadius:10
