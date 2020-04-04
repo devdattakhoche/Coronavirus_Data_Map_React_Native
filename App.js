@@ -1,6 +1,7 @@
 import { NavigationContainer } from '@react-navigation/native';
 import * as React from 'react';
 import Map from './Components/MapView';
+import { BottomTabBar } from '@react-navigation/bottom-tabs'
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { Platform, StyleSheet, Text, View } from 'react-native';
 import { Provider as PaperProvider, DefaultTheme, IconButton } from 'react-native-paper';
@@ -17,26 +18,27 @@ const theme = {
     accent: "#fff"
   }
 };
-const Tab = createBottomTabNavigator(  );
+const Tab = createBottomTabNavigator();
+
 
 export default function App() {
   return (
-    <PaperProvider>
+    <PaperProvider  theme = {DefaultTheme}>
  <View style = {{flex:1}}>
     
       
     
-    
+  
     <NavigationContainer >
-    <Tab.Navigator initialRouteName = 'Map' tabBarOptions ={{showLabel:false,showIcon : false}}>
+    <Tab.Navigator initialRouteName = 'Map' tabBarOptions={{activeTintColor:'black'}} tabBar={props => <BottomTabBar {...props} state={{...props.state, routes: props.state.routes.slice(0,2)}}></BottomTabBar>}> 
       <Tab.Screen name="Map" component={Map}  activeTintColor = 'black' options={{
           tabBarLabel: 'Map View',
           tabBarIcon: () => (
             <IconButton name="book" size = {20}  />
           ),
-        }} />
-      <Tab.Screen name="Settings" component={TableView} />
-      <Tab.Screen name="CityView" component={CityView}  />
+        }} ></Tab.Screen>
+      <Tab.Screen name="Country View" component={TableView} ></Tab.Screen>
+      <Tab.Screen name="CityView" component={CityView} tabBarVisible = {false} ></Tab.Screen>
     </Tab.Navigator>
     </NavigationContainer>
     

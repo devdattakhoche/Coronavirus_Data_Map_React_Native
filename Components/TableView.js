@@ -37,6 +37,7 @@ mydata.map(object => {
         Today_Deaths : object.todayDeaths,
         Updated : object.updated,
         Critical : object.critical,
+        Country_info : object.countryInfo
        
         
     }
@@ -56,7 +57,7 @@ this.setState({
         this.fetchData()
     }
     handlePress =  (Object) => {
-            console.log(this.props , Object)
+            this.props.navigation.navigate('CityView',Object)
     }
   render() {
       if(this.state.refreshing === true){
