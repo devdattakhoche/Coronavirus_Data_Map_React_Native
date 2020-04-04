@@ -11,6 +11,11 @@
       "package": "com.devdattakhoche.coronavirus",
       "versionCode": 1
     },
+    "splash": {
+      "image": "./favicon-lanczos3.png",
+      "backgroundColor": "#000000",
+      "resizeMode": "contain"
+    },
     "platforms": [
       "ios",
       "android",
