@@ -4,7 +4,7 @@
   "expo": {
     "name": "COVID-19 Daily Stats",
     "slug": "Covid19slug",
-    "icon": "./favicon.png",
+    "icon": "./assets/favicon.png",
     "version": "1.0.0",
     
     "android": {
@@ -12,7 +12,7 @@
       "versionCode": 1
     },
     "splash": {
-      "image": "./favicon-lanczos3.png",
+      "image": "./assets/favicon-lanczos3.png",
       "backgroundColor": "#000000",
       "resizeMode": "contain"
     },
