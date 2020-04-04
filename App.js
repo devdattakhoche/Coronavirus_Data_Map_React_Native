@@ -8,6 +8,7 @@ import { Provider as PaperProvider, DefaultTheme, IconButton , Button} from 'rea
 import TableView from './Components/TableView';
 import { Ionicons , Feather , AntDesign } from '@expo/vector-icons'
 import CityView from './Components/CityView';
+import Home from './Components/Home';
 
 
 const theme = {
@@ -31,7 +32,22 @@ export default function App() {
     
   
     <NavigationContainer >
-    <Tab.Navigator initialRouteName = 'Map' tabBarOptions={{activeTintColor:'black',inactiveTintColor:'gray'}} tabBar={props => <BottomTabBar {...props} state={{...props.state, routes: props.state.routes.slice(0,3)}}></BottomTabBar>}> 
+    <Tab.Navigator initialRouteName = 'Home' tabBarOptions={{activeTintColor:'black',inactiveTintColor:'gray'}} tabBar={props => <BottomTabBar {...props} state={{...props.state, routes: props.state.routes.slice(0,3)}}></BottomTabBar>}> 
+    <Tab.Screen name="Home" component={Home} options={{
+         
+         tabBarIcon: ({ focused} ) => {
+            if(focused) 
+            {
+              return <AntDesign name='home' size={20} color = '#4c8bf5'  />
+            }
+            else{
+              return <AntDesign name='home' size={20} color = 'gray'  /> 
+            }
+          }
+           
+         
+        
+        }} ></Tab.Screen>
       <Tab.Screen name="Map" component={Map}   options={{
           tabBarLabel: 'Map View',
           tabBarIcon: ({ focused} ) => {
@@ -63,21 +79,7 @@ export default function App() {
          
         
         }} ></Tab.Screen>
-        <Tab.Screen name="Home" component={Home} options={{
-         
-         tabBarIcon: ({ focused} ) => {
-            if(focused) 
-            {
-              return <AntDesign name='Home' size={20} color = '#4c8bf5'  />
-            }
-            else{
-              return <AntDesign name='Home' size={20} color = 'gray'  /> 
-            }
-          }
-           
-         
         
-        }} ></Tab.Screen>
       <Tab.Screen name="CityView" component={CityView} tabBarVisible = {false} ></Tab.Screen>
     </Tab.Navigator>
     </NavigationContainer>
