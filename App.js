@@ -1,15 +1,18 @@
+import 'react-native-gesture-handler';
 import { NavigationContainer } from "@react-navigation/native";
 import * as React from "react";
-import Map from "./Components/MapView";
+import Map from './Components/MapView'
 import { BottomTabBar } from "@react-navigation/bottom-tabs";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { StyleSheet, View } from "react-native";
 import { Provider as PaperProvider, DefaultTheme } from "react-native-paper";
 import TableView from "./Components/TableView";
-import { Ionicons, Feather, AntDesign } from "@expo/vector-icons";
+import Ionicons from "react-native-vector-icons/Ionicons";
+import AntDesign from "react-native-vector-icons/AntDesign";
+import Feather from "react-native-vector-icons/Feather";
 import CityView from "./Components/CityView";
 import Home from "./Components/Home";
-
+   
 const theme = {
   ...DefaultTheme,
   roundness: 2,
@@ -21,7 +24,7 @@ const theme = {
 };
 const Tab = createBottomTabNavigator();
 
-export default function App() {
+const App = () => {
   return (
     <PaperProvider theme={DefaultTheme}>
       <View style={{ flex: 1 }}>
@@ -98,7 +101,7 @@ export default function App() {
     </PaperProvider>
   );
 }
-
+export default App;
 const styles = StyleSheet.create({
   container: {
     flex: 1,

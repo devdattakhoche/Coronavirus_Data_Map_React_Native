@@ -1,28 +1,4 @@
 {
-  "name": "COVID-19 Daily Stats",
-  "displayName": "COVID-19 Daily Stats",
-  "expo": {
-    "name": "COVID-19 Daily Stats",
-    "slug": "Covid19slug",
-    "icon": "./assets/favicon.png",
-    "version": "1.0.0",
-    
-    "android": {
-      "package": "com.devdattakhoche.coronavirus",
-      "versionCode": 1
-    },
-    "splash": {
-      "image": "./assets/favicon-lanczos3.png",
-      "backgroundColor": "#000000",
-      "resizeMode": "contain"
-    },
-    "platforms": [
-      "ios",
-      "android",
-      "web"
-    ],
-    "assetBundlePatterns": [
-      "**/*"
-    ]
-  }
+  "name": "coronavirus",
+  "displayName": "coronavirus"
 }
