@@ -1,0 +1,13 @@
+// For running on andriod devices
+adb devices
+adb -s <device name> reverse tcp:8081 tcp:8081
+react-native run-android
+
+//cleaning gradlew
+
+cd android && gradlew clean
+
+// release
+cd android && gradlew assembleRelease
+ //bundle
+cd android && gradlew bundleRelease
