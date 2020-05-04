@@ -27,7 +27,7 @@ const CityView = props => {
         <Appbar.Content
           style={{ alignItems: "center" }}
           title="COVID-19"
-          subtitle="World Map View"
+          subtitle={Myobject.Country}
         />
         <IconButton icon="map-marker-radius" color="white" />
       </Appbar.Header>
@@ -66,15 +66,15 @@ const CityView = props => {
               </Title>
               <Title style={styles.Title}>
                 Today's Cases :{" "}
-                {Myobject.Todays_Cases === undefined
+                {Myobject.Today_Cases === undefined
                   ? "Yet to be Updated"
-                  : Myobject.Todays_Cases}
+                  : Myobject.Today_Cases}
               </Title>
               <Title style={styles.Title}>
                 Today's Deaths :{" "}
-                {Myobject.Todays_Deaths === undefined
+                {Myobject.Today_Deaths === undefined
                   ? "Yet to be Updated"
-                  : Myobject.Todays_Deaths}
+                  : Myobject.Today_Deaths}
               </Title>
             </Card.Content>
             <Card.Content style={styles.Content}>

@@ -16,17 +16,17 @@ class Home extends React.Component {
   fetchData = async () => {
     let mydata = null;
     await axios
-      .get("https://corona.lmao.ninja/countries/World")
+      .get("https://corona.lmao.ninja/v2/all")
       .then(response => {
         mydata = response.data;
         this.setState({
           Objects: mydata,
           refreshing: false
         });
-        console.log(this.state.Objects, "asasas");
+        
       })
       .catch(function(error) {
-        Alert.alert("Error", "There was problem in fetching data.");
+        Alert.alert("Error", error.message);
       });
 
     this.setState({
@@ -69,7 +69,7 @@ class Home extends React.Component {
     }
     var Updated = new Date(this.state.Objects.updated).toLocaleString();
     var subtitle = "Updated : " + Updated;
-    console.log(this.state);
+    
     return (
       <View style={{ flex: 1 }}>
         <View>
@@ -96,7 +96,7 @@ class Home extends React.Component {
             }}
           >
             <Card.Title
-              title={this.state.Objects.country}
+              title="World"
               subtitle={subtitle}
               left={props => (
                 <Avatar.Icon
@@ -143,6 +143,9 @@ class Home extends React.Component {
                 {this.state.Objects.todayDeaths === undefined
                   ? "Yet to be Updated"
                   : this.state.Objects.todayDeaths}
+              </Title>
+              <Title style={styles.Title}>
+                Affected Countries : {this.state.Objects.affectedCountries}
               </Title>
             </Card.Content>
           </Card>
